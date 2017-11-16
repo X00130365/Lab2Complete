@@ -1,0 +1,8 @@
+run
+clean
+help
+run
+END
+git add -A
+run
+git init
