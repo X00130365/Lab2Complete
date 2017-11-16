@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/media/sf_student/playLabs2017-Lab2-master/playLabs2017-Lab2-master/conf/routes
-// @DATE:Thu Nov 09 12:11:02 GMT 2017
+// @SOURCE:/home/wdd/webapps/1ab2/conf/routes
+// @DATE:Thu Nov 16 13:24:51 GMT 2017
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -20,22 +20,22 @@ package controllers.javascript {
     }
 
   
-    // @LINE:11
-    def about: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.about",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "about"})
-        }
-      """
-    )
-  
     // @LINE:6
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.index",
       """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + """"})
+        function(name0) {
+          return _wA({method:"GET", url:"""" + _prefix + """" + _qS([(name0 == null ? null : (""" + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + """)("name", name0))])})
+        }
+      """
+    )
+  
+    // @LINE:7
+    def about: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.about",
+      """
+        function(name0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "about" + _qS([(name0 == null ? null : (""" + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + """)("name", name0))])})
         }
       """
     )
